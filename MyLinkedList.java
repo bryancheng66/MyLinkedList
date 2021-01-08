@@ -43,8 +43,22 @@ public class MyLinkedList{
 			Node nextNode = prevNode.getNext();
 			prevNode.setNext(new Node(value));
 			nextNode.setPrev(prevNode.getNext());
+			prevNode.getNext().setNext(nextNode);
+			prevNode.getNext().setPrev(prevNode);
 		}
 		size++;
+	}
+
+	public String get(int index){
+		if (index < 0 || index > size){
+			throw new IndexOutOfBoundsException("Index " + index + " is out of bounds.");
+		}
+		
+		Node current = start;
+		for (int i = 0; i < index; i++){
+			current = current.getNext();
+		}
+		return current.getData();
 	}
 
 	private Node findNthNode(int index){
