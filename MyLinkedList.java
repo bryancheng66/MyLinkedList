@@ -75,7 +75,7 @@ public class MyLinkedList{
 		String result = "{";
 
 		for (int i = 0; i < size; i++){
-			result += "\"" + get(i) + "\"";
+			result += get(i);
 			if (i != size - 1){
 				result += ", ";
 			}
@@ -88,7 +88,7 @@ public class MyLinkedList{
 		String result = "{";
 
 		for (int i = size - 1; i >= 0; i--){
-			result += "\"" + get(i) + "\"";
+			result += get(i);
 			if (i != 0){
 				result += ", ";
 			}
