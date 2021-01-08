@@ -2,6 +2,8 @@ public class Node {
 	//Constructor + Instance Variables
 	public Node(String value){
 		data = value;
+		next = null;
+		prev = null;
 	}
 
 	private String data;
@@ -13,7 +15,7 @@ public class Node {
 	}
 
 	public String setData(String value){
-		oldData = data;
+		String oldData = data;
 		data = value;
 		return oldData;
 	}
@@ -23,7 +25,7 @@ public class Node {
 	}
 
 	public Node setNext(Node newNode){
-		oldNext = next;
+		Node oldNext = next;
 		next = newNode;
 		return oldNext;
 	}
@@ -33,7 +35,7 @@ public class Node {
 	}
 
 	public Node setPrev(Node newNode){
-		oldPrev = prev;
+		Node oldPrev = prev;
 		prev = newNode;
 		return oldPrev;
 	}
