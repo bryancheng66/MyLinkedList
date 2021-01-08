@@ -14,12 +14,13 @@ public class MyLinkedList{
 		if (size == 0){
 			start = new Node(value);
 			end = start;
-			size++;
 		} else {
+			Node oldEnd = end;
 			end.setNext(new Node(value));
 			end = end.getNext();
-			size++;
+			end.setPrev(oldEnd);
 		}
+		size++;
 		return true;
 	}
 
@@ -59,6 +60,28 @@ public class MyLinkedList{
 			current = current.getNext();
 		}
 		return current.getData();
+	}
+
+	public String set(int index, String value){
+		if (index < 0 || index > size){
+			throw new IndexOutOfBoundsException("Index " + index + " is out of bounds.");
+		}
+
+		Node currentNode = findNthNode(index);
+		return currentNode.setData(value);
+	}
+
+	public String toString(){
+		String result = "{";
+
+		for (int i = 0; i < size; i++){
+			result += "\"" + get(i) + "\"";
+			if (i != size - 1){
+				result += ", ";
+			}
+		}
+		
+		return result + "}";
 	}
 
 	private Node findNthNode(int index){
