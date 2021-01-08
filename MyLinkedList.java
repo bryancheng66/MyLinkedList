@@ -84,6 +84,19 @@ public class MyLinkedList{
 		return result + "}";
 	}
 
+	public String toStringReversed(){
+		String result = "{";
+
+		for (int i = size - 1; i >= 0; i--){
+			result += "\"" + get(i) + "\"";
+			if (i != 0){
+				result += ", ";
+			}
+		}
+		
+		return result + "}";
+	}
+
 	private Node findNthNode(int index){
 		Node current = start;
 		
