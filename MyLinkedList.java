@@ -97,6 +97,35 @@ public class MyLinkedList{
 		return result + "}";
 	}
 
+	public String remove(int index){
+		if (index < 0 || index > size){
+			throw new IndexOutOfBoundsException("Index " + index + " is out of bounds.");
+		}
+
+		String result = get(index);
+
+		if (size == 1) {
+			start = null;
+			end = null;
+		} else if (index == 0){
+			Node removee = findNthNode(index);
+			removee.getNext().setPrev(null);
+			start = removee.getNext();
+		} else if (index == size - 1){
+			Node removee = findNthNode(index);
+			removee.getPrev().setNext(null);
+			end = removee.getPrev();
+		} else {
+			Node frontNode = findNthNode(index - 1);
+			Node backNode = frontNode.getNext().getNext();
+			frontNode.setNext(backNode);
+			backNode.setPrev(frontNode);
+		}
+
+		size--;
+		return result;
+	}
+
 	private Node findNthNode(int index){
 		Node current = start;
 		
