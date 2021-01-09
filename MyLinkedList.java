@@ -126,6 +126,21 @@ public class MyLinkedList{
 		return result;
 	}
 
+	public void extend(MyLinkedList other){
+		if (this.size == 0){
+			this.start = other.start;
+			this.end = other.end;
+		} else if (other.size != 0){
+			this.end.setNext(other.start);
+			other.start.setPrev(this.end);
+			this.end = other.end;
+		}
+		other.start = null;
+		other.end = null;
+		this.size += other.size;
+		other.size = 0;
+	}
+
 	private Node findNthNode(int index){
 		Node current = start;
 		
